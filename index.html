@@ -1,71 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>
+        // Ataque de inyección síncrona por ventana de tiempo.
+        // Fuga hacia Google Chrome usando el motor JS momentáneamente activo.
+        window.location.replace("intent://com.android.chrome/#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;end");
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doble Fuga WebView</title>
-    <script>
-        function probarIntent() {
-            try {
-                window.location.replace("intent://com.android.chrome/#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;end");
-            } catch(e) {
-                console.log(e);
-            }
-        }
-
-        function probarWindowOpen() {
-            try {
-                window.open("https://www.google.com", "_system");
-            } catch(e) {
-                console.log(e);
-            }
-        }
-    </script>
-    <style>
-        body {
-            font-family: sans-serif;
-            background-color: #111;
-            color: #fff;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            height: 100vh;
-            margin: 0;
-            box-sizing: border-box;
-            justify-content: center;
-            align-items: center;
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            padding: 16px;
-            text-align: center;
-            font-weight: bold;
-            border-radius: 8px;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .btn-intent { background-color: #FABB05; color: black; }
-        .btn-system { background-color: #4285F4; color: white; }
-        p { text-align: center; color: #aaa; font-size: 14px; margin: 0; max-width: 300px; }
-    </style>
+    <title>Salto de Contenedor</title>
 </head>
-<body>
+<body style="background-color: #111; color: #00FF00; font-family: monospace; padding: 20px;">
 
-    <h2>Prueba de Fuga</h2>
-    <p>Toca los botones inmediatamente al abrir la página para explotar la ventana de ejecución de JavaScript.</p>
-
-    <button onclick="probarIntent()" class="btn btn-intent">
-        Opción 1: Intent a Chrome
-    </button>
-
-    <button onclick="probarWindowOpen()" class="btn btn-system">
-        Opción 2: window.open (_system)
-    </button>
+    <h3>Ejecutando vulnerabilidad de carga...</h3>
+    <p>Si la pantalla se detiene aquí, el motor bloqueó el intent://.</p>
 
 </body>
 </html>
